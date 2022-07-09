@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+    .navbar-section {
+        padding: 1px;
+    }
+
+    /* Hero container*/
+
+    .hero-container {
+
+        background-color: #1F1F26;
+        width: 100%;
+        height: 15rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5rem;
+    }
+
+    .hero h1{
+        color: white;
+    }
+
+    /*Main section*/
+
+    .recent-post-section {
+        margin-top: 2rem;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+        align-items: center;
+
+    }
+
+    .recent-post-section-title {
+        width: 85%;
+    }
+
+    .recent-post-section-title h3 {
+        color: white;
+    }
+
+    .recent-post-container {
+        width: 85%;
+        display: flex;
+        flex-direction: column;
+        gap: 4.5rem;
+
+    }
+
+
+
+    .main-section {
+        margin-bottom: 3rem;
+    }
+
+    /* Post item*/
+
+    .post-item {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        color: white;
+    }
+
+    .post-item img {
+        width: 100%;
+        border-radius: 9px;
+    }
+
+    .post-item-categories {
+        display: flex;
+    }
+
+    .post-item-categories h5 {
+
+        padding: 0.8rem;
+        border: 2px solid #303E8C;
+        border-radius: 15px;
+    }
+
+    .post-author-container {
+        display: grid;
+        grid-template-columns: 3.7rem 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    .author-image {
+        width: 3.7rem;
+        height: 3.7rem;
+        background-image: url(../images/user-profile-image.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 50%;
+        grid-column: 1;
+        grid-row: 1/ span 2;
+    }
+
+    .author-name {
+        align-self: flex-end;
+    }
+
+    .author-name , .post-item-date {
+        padding: 0.1rem;
+        margin-left: 1.5rem;
+    }
+
+
+    @media  screen and (min-width: 620px) {
+
+        .recent-post-container {
+            width: 85%;
+            display: grid;
+            margin: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-auto-rows: auto;
+            justify-content: center;
+            gap: 40px 20px;
+        }
+    }
+
+
+

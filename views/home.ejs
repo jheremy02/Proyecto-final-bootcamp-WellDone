@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/reset.css">
+    <title>Home</title>
+</head>
+<body>
+    <header class="header-section">
+
+        <% include _nav.ejs %>
+
+        <div class="hero-container">
+            <div class="hero">
+                <h1> Bend Reality</h1>
+            </div>
+        </div>
+
+    </header>
+    <main class="main-section">
+        <section class="recent-post-section">
+            <div class="recent-post-section-title"><h3>Publicaciones recientes</h3></div>
+            <div class="recent-post-container">
+                <article class="post-item">
+                  <a href="/publication"><img src="/images/post-image.jpg" alt=""></a>
+                    <div class="post-item-categories">
+                        <h5>Technology</h5>
+                    </div>
+                    <div class="post-item-title"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, unde alias.</h2></div>
+                    <div class="post-item-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam rem necessitatibus dicta assumenda inventore repellat dignissimos quibusdam nobis quaerat officiis reprehenderit.</div>
+
+                    <div class="post-author-container">
+                        <div class="author-image"></div>
+                        <div class="author-name">Elon Musk</div>
+                        <div class="post-item-date">May 02, 2022</div>
+
+                    </div>
+                </article>
+                <article class="post-item">
+                    <a href="/publication"><img src="/images/post-image.jpg" alt=""></a>
+                    <div class="post-item-categories">
+                        <h5>Technology</h5>
+                    </div>
+                    <div class="post-item-title"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, unde alias.</h2></div>
+                    <div class="post-item-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam rem necessitatibus dicta assumenda inventore repellat dignissimos quibusdam nobis quaerat officiis reprehenderit.</div>
+
+                    <div class="post-author-container">
+                        <div class="author-image"></div>
+                        <div class="author-name">Elon Musk</div>
+                        <div class="post-item-date">May 02, 2022</div>
+
+                    </div>
+                </article>
+                <article class="post-item">
+                  <a href="/publication"><img src="/images/post-image.jpg" alt=""></a>
+                    <div class="post-item-categories">
+                        <h5>Technology</h5>
+                    </div>
+                    <div class="post-item-title"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, unde alias.</h2></div>
+                    <div class="post-item-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam rem necessitatibus dicta assumenda inventore repellat dignissimos quibusdam nobis quaerat officiis reprehenderit.</div>
+
+                    <div class="post-author-container">
+                        <div class="author-image"></div>
+                        <div class="author-name">Elon Musk</div>
+                        <div class="post-item-date">May 02, 2022</div>
+
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <% include _footer.ejs %>
+    <script type="module" src="/navigation.js"></script>
+</body>
+</html>

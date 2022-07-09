@@ -1,4 +1,5 @@
-import { signUpService } from "/javascripts/SignUp/SignUpService.js";
+import { signUpService } from "./SignUpService.js";
+import { pubSub } from "../pubSub.js";
 
 export class SignUpController {
 
@@ -51,6 +52,7 @@ export class SignUpController {
             const arePasswordEqual=this.checkIfPasswordsAreEqual(password,confirmPassword)
             if (!arePasswordEqual) {
                 console.log("Error , contraseñas deben ser iguales")
+                pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,"contraseñas deben ser iguales")
                 return;
             }
 
@@ -58,14 +60,15 @@ export class SignUpController {
 
             if (!isPasswordValid) {
                 console.log("la contraseña no es valida")
-
+                pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,"La contraseña no es valida")
                 return;
             }
 
             const isValidEmail=this.validateEmail(email)
-
+            console.log(isValidEmail)
             if (!isValidEmail) {
                 console.log("Email Invalido")
+                pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,"Email invalido")
             }
 
             this.createUser(userData)

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Create Post</title>
+</head>
+<body >
+    <main class="main-section w-screen h-screen bg-primary-backGray flex justify-center pt-9 pb-10">
+        <div class="create-form-container w-5/6 bg-primary-gray flex flex-col items-center rounded-lg h-auto md:w-[87%] gap-8">
+            <h1 class="text-white font-bold text-3xl pt-7 px-3">Crear Publicacion</h1>
+            <form action="" class="flex flex-col justify-center  md:w-11/12">
+                <label class="block text-white text-sm font-bold mb-2" for="username">
+                    Titulo
+                  </label>
+                  <input class=" bg-primary-darkBlue shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline mb-5" id="username" type="text" placeholder="Username">
+
+                  <label for="message" class="block mb-2 text-sm font-medium text-white dark:text-gray-400">Contenido</label>
+                  <textarea id="message" rows="4" class="bg-primary-darkBlue mb-5 block p-2.5 w-full text-sm text-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
+
+                  <label for="countries" class="block mb-2 text-sm font-medium text-white dark:text-gray-400">Categoria</label>
+                    <select id="countries" class=" mb-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>Seleccionar</option>
+                    <option value="">Life</option>
+                    <option value="">Technology</option>
+                    <option value="">Work</option>
+                    <option value="">Exercise</option>
+                    </select>
+
+
+                    <label class="block mb-2 text-sm font-medium text-white dark:text-gray-300" for="file_input">Imagen</label>
+                    <input class="mb-5 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+                    <button class="bg-primary self-center w-28 h-11 text-white rounded-lg text-xl text-center" type="submit">Publicar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

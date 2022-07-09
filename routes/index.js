@@ -1,8 +1,13 @@
 
+const homeRouter=require("./home.router")
 const authRouter=require("./auth.router.js")
+const publicationRouter=require("./publication.router")
+
 
 function routerIndex(app) {
-  app.use("/signUp",authRouter)
+  app.use("/",homeRouter)
+  app.use("/auth",authRouter)
+  app.use("/publication",publicationRouter)
 }
 
 
