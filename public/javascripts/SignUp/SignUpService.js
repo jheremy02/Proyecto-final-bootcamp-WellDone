@@ -7,7 +7,11 @@ class SignUpService {
     async createUser(userData) {
         const body={...userData}
 
-        const response = await fetch('http://localhost:3000/api/auth/signUp',{
+        let response;
+
+        try {
+
+          response = await fetch('http://localhost:3000/api/auth/signUp',{
             method: "POST",
             body: JSON.stringify(body),
             headers: {
@@ -15,8 +19,16 @@ class SignUpService {
         },
         })
 
-        const data= await response.json()
-        console.log(data)
+        } catch (error) {
+          throw new Error(error)
+        }
+
+        if (!response.ok) {
+          const data=await response.json()
+          throw data.errors
+        }
+
+
     }
 
     async loginUser(username,password) {

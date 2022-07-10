@@ -35,10 +35,7 @@ export class NotificationController {
         const closeButtonElement=notificationItem.querySelector("button")
         closeButtonElement.addEventListener('click',(event)=>{
 
-          this.notificationElement.outerHTML=''
-          event.stopPropagation()
-
-
+          this.notificationElement.innerHTML=''
       })
 
     }

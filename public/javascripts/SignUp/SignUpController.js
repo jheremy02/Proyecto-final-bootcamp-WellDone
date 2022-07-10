@@ -106,7 +106,16 @@ export class SignUpController {
             //pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,"Usuario registrado con exito")
             //this.loginUser(username,password)
         } catch (error) {
-            //pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
+
+          if (error.length>0) {
+            error.forEach((error)=>{
+              pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error.msg || error)
+            })
+          }   else {
+            pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
+          }
+
+
         }
 
     }
