@@ -41,7 +41,16 @@ export class NotificationController {
     }
 
     showSuccess(message){
-        return;
+      const notificationTemplate=notificactionViews.buildNotificationSuccess(message)
+        const notificationItem=document.createElement('div')
+        notificationItem.innerHTML=notificationTemplate
+        this.notificationElement.appendChild(notificationItem)
+
+        const closeButtonElement=notificationItem.querySelector("button")
+        closeButtonElement.addEventListener('click',(event)=>{
+
+          this.notificationElement.innerHTML=''
+      })
     }
 
     deleteNotification() {

@@ -45,10 +45,11 @@ export class SignUpController {
             const name= inputElements.get('inputName')
             const lastName= inputElements.get('inputLastName')
             const email=inputElements.get('inputEmail')
+            const userName= inputElements.get('inputUsername')
             const password=inputElements.get('inputPassword')
             const confirmPassword=inputElements.get('inputConfirmPassword')
 
-            const userData={name,lastName,email,password,confirmPassword}
+            const userData={name,lastName,email,userName,password,confirmPassword}
             const arePasswordEqual=this.checkIfPasswordsAreEqual(password,confirmPassword)
             if (!arePasswordEqual) {
                 console.log("Error , contraseñas deben ser iguales")
@@ -69,6 +70,7 @@ export class SignUpController {
             if (!isValidEmail) {
                 console.log("Email Invalido")
                 pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,"Email invalido")
+                return;
             }
 
             this.createUser(userData)
@@ -102,18 +104,19 @@ export class SignUpController {
         //const templateSpinner=buildAdvertisementsSpinnerView()
         try {
             await signUpService.createUser(userData)
-            //this.signUpFormElement.innerHTML=templateSpinner
-            //pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,"Usuario registrado con exito")
-            //this.loginUser(username,password)
+
+            pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,"Usuario registrado con exito")
+            this.loginUser(userData.userName,userData.password)
         } catch (error) {
 
-          if (error.length>0) {
+          if (Array.isArray(error)) {
             error.forEach((error)=>{
               pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error.msg || error)
             })
           }   else {
             pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
           }
+
 
 
         }
@@ -135,5 +138,9 @@ export class SignUpController {
     static async  closeSession(){
         window.localStorage.removeItem('token')
         window.location.href='/'
+    }
+
+     isIterable (value) {
+      return Symbol.iterator in Object(value);
     }
 }

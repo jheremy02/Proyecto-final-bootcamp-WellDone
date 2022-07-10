@@ -6,7 +6,6 @@ class SignUpService {
 
     async createUser(userData) {
         const body={...userData}
-
         let response;
 
         try {
@@ -24,17 +23,19 @@ class SignUpService {
         }
 
         if (!response.ok) {
+
           const data=await response.json()
+          console.log(data)
           throw data.errors
         }
 
 
     }
 
-    async loginUser(username,password) {
-        const body={username,password}
+    async loginUser(userName,password) {
+        const body={userName,password}
 
-        const response = await fetch("http://localhost:8000/auth/login", {
+        const response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -50,9 +51,9 @@ class SignUpService {
 
       console.log(data)
 
-      const token =data.accessToken;
+      //const token =data.accessToken;
 
-      localStorage.setItem('token',token)
+      //localStorage.setItem('token',token)
 
     }
 
