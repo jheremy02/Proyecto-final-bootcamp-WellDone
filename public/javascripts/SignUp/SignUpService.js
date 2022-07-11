@@ -43,17 +43,17 @@ class SignUpService {
         }
       });
 
-      const data=await response.json()
+      const dataResponse=await response.json()
 
       if (!response.ok) {
           console.log("hubo un error al loguear usuario")
       }
 
-      console.log(data)
 
-      //const token =data.accessToken;
 
-      //localStorage.setItem('token',token)
+      const token =dataResponse.data.accessToken;
+      console.log(token)
+      localStorage.setItem('token',token)
 
     }
 

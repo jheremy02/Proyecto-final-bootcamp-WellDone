@@ -2,8 +2,7 @@ const express=require("express")
 const router=express.Router()
 const User=require("../../models/User.js")
 const { body, validationResult } = require('express-validator');
-
-
+const auth=require("../../middlewares/auth.js")
 
 //Registro de usuario
 router.post(
@@ -56,20 +55,26 @@ body('password').isLength({ min: 5 }),(req,res)=>{
     return res.status(400).json({ errors: errors.array() });
   } else {
     const {userName,password} = req.body
-    console.log(userName)
-    User.findOne({userName},(err,user)=>{
+
+
+    User.findOne({userName},(err,user)=>{ //buscar el nombre de usuario ene la db
       if (err) {
         res.status(500).json({errors:"Error al aunttenicar usuario"})
       } else if (!user){
         res.status(404).json({errors:"usuario no existe"})
       }else {
-          user.isCorrectPassword(password,(err,result)=>{
+          user.isCorrectPassword(password,(err,result)=>{//comparar contraseña
+
             if (err) {
                 res.status(500).json({errors:"error al autenticar"})
             } else if (result){
-              res.status(200).json({errors:"usuario autenticado"})
+              
+              //si el login es valido genera un token
+              const accessToken=auth.generateAccessToken(user.userName)
+
+              res.status(200).json({message:"usuario autenticado",data:{...user.toJSON(),accessToken}})
             } else {
-              res.status(200).json({errors:"usuario y/o contraseña incorrecta"})
+              res.status(500).json({errors:"usuario y/o contraseña incorrecta"})
             }
           })
       }
