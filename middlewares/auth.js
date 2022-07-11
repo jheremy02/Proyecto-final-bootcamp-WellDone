@@ -3,20 +3,20 @@ const jwt=require("jsonwebtoken")
 function authenticateToken(req,res,next) {
   const authHeader=req.headers["authorization"];
   const token=authHeader && authHeader.split(' ')[1];
-
+  console.log(token)
   if (token==null) {
-    return res.sendStatus(401)
+    return res.status(401).json({errors:"unauthorized"})
   }
 
-  jwt.verify(token,"Snipet_SecretKey",(err,user)=>{
-    if (err) return res.sendStatus(403);
+  jwt.verify(token,"Snippet_SecretKEY",(err,user)=>{
+    if (err) return res.status(403).json({errors:"accion denegada"});
     req.user=user
     next()
   })
 }
 
 function generateAccessToken(userName) {
-    return jwt.sign({data:userName},"Snippet_SecretKey",{expiresIn:"1h"})
+    return jwt.sign({data:userName},"Snippet_SecretKEY",{expiresIn:"1h"})
 }
 
 

@@ -44,7 +44,7 @@ import { signUpService } from "../SignUp/SignUpService.js";
 
      onSubmitForm() {
          this.createFormElement.addEventListener('submit',(event)=>{
-             event.preventDefault()
+            event.preventDefault()
              const inputElements=new FormData(this.createFormElement)
              const title= inputElements.get('inputTitle') ;
              const content=inputElements.get('inputContent') ;
@@ -52,25 +52,28 @@ import { signUpService } from "../SignUp/SignUpService.js";
              const image=inputElements.get('inputImage') ;
 
              const publicationData={title,content,category,image}
-             console.log(publicationData)
-             this.createAdvertisement(publicationData)
+
+             this.createPublication(publicationData)
 
          })
      }
 
-     async createAdvertisement(publicationData){
+     async createPublication(publicationData){
         //const spinnerTemplate = buildAdvertisementsSpinnerView()
 
         //this.createFormElement.innerHTML=spinnerTemplate
 
         try {
-            await publicationService.createAdvertisement(publicationData)
+            await publicationService.createPublication(publicationData)
             this.createFormElement.replaceWith(this.createFormElementClone)
-            pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,"Anuncio creado con éxito")
 
+
+              pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,"Publicacion creado con exito")
 
         } catch (error) {
-            pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
+
+            pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,error)
+        
         }
 
 

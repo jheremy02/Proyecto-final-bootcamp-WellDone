@@ -4,18 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/navbar.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
     <title>Create Post</title>
 </head>
 <body >
+  <% include _nav.ejs %>
     <main class="main-section w-screen h-full bg-primary-backGray flex justify-center pt-9 pb-10">
 
         <div class="create-form-container w-5/6 bg-primary-gray flex flex-col items-center rounded-lg h-auto md:w-[87%]  gap-8">
-          <div id="notification-container">
-          </div>
+
             <h1 class="text-white font-bold text-3xl pt-7 px-3">Crear Publicacion</h1>
+            <div id="notification-container">
+            </div>
             <form action="" class="flex flex-col justify-center  md:w-11/12">
+
                 <label class="block text-white text-sm font-bold mb-2" for="inputTitle">
                     Titulo
                   </label>

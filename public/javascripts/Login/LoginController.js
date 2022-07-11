@@ -53,7 +53,14 @@ export class LoginController{
             await signUpService.loginUser(userName,password)
             window.location.href='/';
          } catch (error) {
-             pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
+          
+          if (Array.isArray(error)) {
+            error.forEach((error)=>{
+              pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error.msg || error)
+            })
+          }   else {
+            pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
+          }
          }
 
      }

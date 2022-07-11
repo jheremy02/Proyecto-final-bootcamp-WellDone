@@ -1,4 +1,5 @@
 import { signUpService } from "../SignUp/SignUpService.js";
+import { CreatePublication } from "./CreatePublicationController.js";
 
 export default {
     async getAdvertisements(){
@@ -49,7 +50,7 @@ export default {
         return advertisement
     },
 
-    async createAdvertisement(publicationData){
+    async createPublication(publicationData){
         const body={
             title: publicationData.title,
             content: publicationData.content,
@@ -60,7 +61,7 @@ export default {
         let response;
 
         try {
-            response = await fetch('http://localhost:3000/api/publication',{
+            response = await fetch('http://localhost:3000/api/publication/create',{
                 method: "POST",
                 body: JSON.stringify(body),
                 headers: {
@@ -72,11 +73,21 @@ export default {
             throw new Error("No he podido crear el anuncio")
         }
 
+        if (!response.ok) {
+
+          const data=await response.json()
+          console.log(data)
+          throw data.errors
+        }
+
         try {
             const data=await response.json()
         } catch (error) {
             throw new Error("No he podido transformar la respuesta a json")
         }
+
+
+
 
     },
 

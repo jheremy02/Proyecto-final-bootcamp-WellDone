@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/stylesheets/index.css">
     <link rel="stylesheet" href="/stylesheets/navbar.css">
     <link rel="stylesheet" href="/stylesheets/footer.css">
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/reset.css">
@@ -24,6 +25,8 @@
         </div>
 
     </header>
+    <div id="notification-container">
+    </div>
     <main class="main-section">
         <section class="recent-post-section">
             <div class="recent-post-section-title"><h3>Publicaciones recientes</h3></div>
@@ -77,6 +80,7 @@
         </section>
     </main>
     <% include _footer.ejs %>
-    <script type="module" src="/navigation.js"></script>
+    <script type='module' src="/javascripts/app.js"></script>
+    <script type='module' src="/javascripts/Navigation/NavigationController.js"></script>
 </body>
 </html>

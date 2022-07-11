@@ -8,3 +8,8 @@ const publicationSchema= mongoose.Schema({
   image:{type:String,required:true}
 },{collection:"publications"})
 
+const Publication= mongoose.model("Publication",publicationSchema)
+
+
+//exporto el modelo
+module.exports=Publication

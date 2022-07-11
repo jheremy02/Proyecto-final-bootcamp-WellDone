@@ -35,7 +35,10 @@ class SignUpService {
     async loginUser(userName,password) {
         const body={userName,password}
 
-        const response = await fetch("http://localhost:3000/api/auth/login", {
+        let response;
+
+        try {
+        response = await fetch("http://localhost:3000/api/auth/login", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
@@ -43,13 +46,16 @@ class SignUpService {
         }
       });
 
-      const dataResponse=await response.json()
-
-      if (!response.ok) {
-          console.log("hubo un error al loguear usuario")
+      } catch (error) {
+      throw new Error(error)
       }
 
+      if (!response.ok) {
+      const dataResponse=await response.json()
+        console.log(dataResponse.errors)
+      throw dataResponse.errors
 
+      }
 
       const token =dataResponse.data.accessToken;
       console.log(token)
@@ -58,6 +64,7 @@ class SignUpService {
     }
 
     getLoggedUser(){
+      console.log(localStorage.getItem("token"))
         return localStorage.getItem("token") || null
       }
 
