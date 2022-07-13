@@ -44,6 +44,7 @@ export class NotificationController {
       const notificationTemplate=notificactionViews.buildNotificationSuccess(message)
         const notificationItem=document.createElement('div')
         notificationItem.innerHTML=notificationTemplate
+        console.log(notificationItem)
         this.notificationElement.appendChild(notificationItem)
 
         const closeButtonElement=notificationItem.querySelector("button")

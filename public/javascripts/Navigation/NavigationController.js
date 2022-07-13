@@ -32,9 +32,7 @@ import { SignUpController } from "../SignUp/SignUpController.js";
         const navbarElement=this.navigationElement.querySelector('.navbar-list')
         navbarElement.appendChild(buttonNode)
         const buttonElement=this.navigationElement.querySelector('.navbar-list-item')
-        buttonElement.addEventListener('click',()=>{
-            window.location.href="/createAdvertisement.html"
-        })
+
     }
 
     async drawLoginButton() {
@@ -44,9 +42,7 @@ import { SignUpController } from "../SignUp/SignUpController.js";
         const navbarElement=this.navigationElement.querySelector('.navbar-list')
         navbarElement.appendChild(buttonNode)
         const buttonElement=this.navigationElement.querySelector('.navbar-list-item')
-        buttonElement.addEventListener('click',()=>{
-            window.location.href="/createAdvertisement.html"
-        })
+
     }
 
      drawCreateButton() {
@@ -56,22 +52,23 @@ import { SignUpController } from "../SignUp/SignUpController.js";
         const navbarElement=document.querySelector('.navbar-list')
         navbarElement.appendChild(buttonNode)
         const buttonElement=document.querySelector('.navbar-list-item')
-        buttonElement.addEventListener('click',()=>{
-            window.location.href="/createAdvertisement.html"
-        })
+
     }
 
     drawCloseSessionButton(){
         const buttonTemplate=navigationViews.buildCloseSession()
         const parser=new DOMParser()
         const buttonNode=parser.parseFromString(buttonTemplate,'text/html').body.querySelector('li')
-        const navbarElement=document.querySelector('.navbar-nav.mr-auto')
+        const navbarElement=document.querySelector('.navbar-list')
         navbarElement.appendChild(buttonNode)
-        const buttonElement=document.querySelector('.navbar-list-item.close-session')
+        const buttonElement=document.querySelector('.navbar-list-item')
+
+          /*
         buttonElement.addEventListener('click',()=>{
             SignUpController.closeSession()
             window.location.href="/"
         })
+        */
     }
 
     handleButton() {

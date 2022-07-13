@@ -51,21 +51,27 @@ export default {
     },
 
     async createPublication(publicationData){
-        const body={
+        const data={
             title: publicationData.title,
             content: publicationData.content,
-            category: publicationData.category,
+            categories: publicationData.categories,
             image: publicationData.image
         }
+
+        const body=new FormData()
+
+        body.append("title",data.title)
+        body.append("content",data.content)
+        body.append("categories",data.categories)
+        body.append("image",data.image)
 
         let response;
 
         try {
             response = await fetch('http://localhost:3000/api/publication/create',{
                 method: "POST",
-                body: JSON.stringify(body),
+                body: body,
                 headers: {
-                "Content-Type": "application/json",
                 Authorization: "Bearer "+`${signUpService.getLoggedUser()}`
             }})
 

@@ -50,11 +50,12 @@ class SignUpService {
       throw new Error(error)
       }
 
-      if (!response.ok) {
       const dataResponse=await response.json()
-        console.log(dataResponse.errors)
-      throw dataResponse.errors
+      if (!response.ok) {
 
+      console.log(dataResponse.errors)
+      throw dataResponse.errors
+        
       }
 
       const token =dataResponse.data.accessToken;

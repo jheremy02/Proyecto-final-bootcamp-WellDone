@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/navbar.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
+    <link rel="stylesheet" href="/stylesheets/categories.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Create Post</title>
 </head>
-<body >
+<body class=" bg-primary-backGray">
   <% include _nav.ejs %>
-    <main class="main-section w-screen h-full bg-primary-backGray flex justify-center pt-9 pb-10">
+    <main class="main-section w-screen mt-40 flex justify-center overflow-x-hidden mb-10" >
 
-        <div class="create-form-container w-5/6 bg-primary-gray flex flex-col items-center rounded-lg h-auto md:w-[87%]  gap-8">
+        <div class="create-form-container w-5/6 bg-primary-gray flex flex-col items-center rounded-lg  md:w-[87%]  gap-8 ">
 
             <h1 class="text-white font-bold text-3xl pt-7 px-3">Crear Publicacion</h1>
             <div id="notification-container">
@@ -30,32 +32,71 @@
                   <label for="inputContent" class="block mb-2 text-sm font-medium text-white dark:text-gray-400">Contenido</label>
                   <textarea id="inputContent" rows="4" name="inputContent" class="bg-primary-darkBlue mb-5 block p-2.5 w-full text-sm text-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
 
-                  <label for="categories" class="block mb-2 text-sm font-medium text-white dark:text-gray-400">Categoria</label>
-                    <select id="categories" name="categories" class=" mb-5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Seleccionar</option>
-                    <option value="Life">Life</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Work">Work</option>
-                    <option value="Exercise">Exercise</option>
-                    </select>
+                  <label class="block text-white text-sm font-bold mb-2" for="inputTitle">Categorias</label>
 
-                    <label class="block text-white text-sm font-bold mb-2" for="inputImage">
-                      Imagen
-                    </label>
-                    <input class=" bg-primary-darkBlue shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline mb-5" id="inputImage"    name="inputImage" type="text" placeholder="Image">
+                    <div class="select-btn mb-8">
+                        <span class="btn-text">Selecciona</span>
+                        <span class="arrow-dwn">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </span>
+                    </div>
+
+                    <ul class="list-items">
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">HTML & CSS</span>
+                        </li>
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">Bootstrap</span>
+                        </li>
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">JavaScript</span>
+                        </li>
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">Node.Js</span>
+                        </li>
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">React JS</span>
+                        </li>
+                        <li class="item">
+                            <span class="checkbox">
+                                <i class="fa-solid fa-check check-icon"></i>
+                            </span>
+                            <span class="item-text">Mango DB</span>
+                        </li>
+                    </ul>
 
 
 
-                    <!--
-                      <label class="block mb-2 text-sm font-medium text-white dark:text-gray-300" for="file_input">Imagen</label>
-                    <input class="mb-5 block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
 
-                    -->
+                    <label class="block mb-2 text-sm font-medium text-white dark:text-gray-300" for="file_input">Upload Imagen</label>
+                    <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 mb-6" id="file_input" type="file" name="file_input">
 
-                    <button class="bg-primary self-center w-28 h-11 text-white rounded-lg text-xl text-center" type="submit">Publicar</button>
+
+
+
+
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ">Publicar</button>
             </form>
         </div>
     </main>
+
     <script type="module" src="/javascripts/Publication/createPublication.js"></script>
+
+
 </body>
 </html>
