@@ -1,6 +1,6 @@
 import publicationService from "../Publication/PublicationService.js";
  import { pubSub } from "../pubSub.js";
- //import { buildAdvertisementsSpinnerView } from "./AdvertisementsView.js";
+ //import { buildpublicationsSpinnerView } from "./publicationsView.js";
 import { signUpService } from "../SignUp/SignUpService.js";
  export class CreatePublication {
      constructor (createFormElement) {
@@ -52,6 +52,7 @@ import { signUpService } from "../SignUp/SignUpService.js";
              this.listItemsNode.querySelectorAll(".item.checked").forEach((item)=>{
                 categories.push(item.querySelector(".item-text").textContent)
              })
+             console.log(categories)
              const image=inputElements.get('file_input') ;
 
              const publicationData={title,content,categories,image}
@@ -88,7 +89,7 @@ items.forEach(item => {
      }
 
      async createPublication(publicationData){
-        //const spinnerTemplate = buildAdvertisementsSpinnerView()
+        //const spinnerTemplate = buildpublicationsSpinnerView()
 
         //this.createFormElement.innerHTML=spinnerTemplate
 

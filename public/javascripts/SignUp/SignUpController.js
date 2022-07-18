@@ -101,7 +101,7 @@ export class SignUpController {
 
     // la entrada deberia ser un objeto con los valores de los campos de registro
     async createUser(userData) {
-        //const templateSpinner=buildAdvertisementsSpinnerView()
+        //const templateSpinner=buildpublicationsSpinnerView()
         try {
             await signUpService.createUser(userData)
 

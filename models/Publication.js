@@ -9,6 +9,21 @@ const publicationSchema= mongoose.Schema({
   userName:{type:String,required:true}
 },{collection:"publications" , timestamps:true})
 
+
+
+publicationSchema.statics.list=function (pagination) {
+
+  const query=Publication.find()
+  query.skip(pagination.start)
+  query.limit(pagination.limit)
+  query.sort(pagination.sort)
+
+  return query.exec().then(data=>{
+      return data
+  })
+}
+
+
 const Publication= mongoose.model("Publication",publicationSchema)
 
 

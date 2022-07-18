@@ -1013,6 +1013,9 @@ input:checked + .toggle-bg {
 .w-full {
   width: 100%;
 }
+.w-52 {
+  width: 13rem;
+}
 .w-64 {
   width: 16rem;
 }
@@ -1078,6 +1081,9 @@ input:checked + .toggle-bg {
 .flex-col {
   flex-direction: column;
 }
+.flex-wrap {
+  flex-wrap: wrap;
+}
 .items-start {
   align-items: flex-start;
 }
@@ -1098,6 +1104,9 @@ input:checked + .toggle-bg {
 }
 .justify-between {
   justify-content: space-between;
+}
+.gap-2 {
+  gap: 0.5rem;
 }
 .gap-8 {
   gap: 2rem;

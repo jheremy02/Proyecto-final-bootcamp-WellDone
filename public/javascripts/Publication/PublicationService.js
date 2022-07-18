@@ -2,30 +2,30 @@ import { signUpService } from "../SignUp/SignUpService.js";
 import { CreatePublication } from "./CreatePublicationController.js";
 
 export default {
-    async getAdvertisements(){
+    async getPublications(){
 
 
         let responseHttp;
-        let advertisements;
+        let publications;
         try {
-            responseHttp=await fetch('http://localhost:8000/api/advertisements')
+            responseHttp=await fetch('http://localhost:3000/api/publication')
         } catch (error) {
-            throw new Error("No he podido ir por los anuncios")
+            throw new Error("No he podido ir por las publicaciones")
         }
 
         try {
 
-            advertisements=await responseHttp.json()
+          publications=await responseHttp.json()
 
         } catch (error) {
             throw new Error("No he podido transformar la respuesta a json")
         }
 
-        return advertisements
+        return publications
     } ,
 
     async getAdvertisement(advertisementId){
-        const url=`http://localhost:8000/api/advertisements/${advertisementId}`
+        const url=`http://localhost:8000/api/publications/${advertisementId}`
         let responseHttp;
         let advertisement;
         try {
@@ -67,6 +67,8 @@ export default {
 
         let response;
 
+        console.log(body.categories)
+
         try {
             response = await fetch('http://localhost:3000/api/publication/create',{
                 method: "POST",
@@ -98,7 +100,7 @@ export default {
     },
 
     async deleteAdvertisement (advertisementId) {
-        const url=`http://localhost:8000/api/advertisements/${advertisementId}`
+        const url=`http://localhost:8000/api/publications/${advertisementId}`
         let responseHttp;
 
         try {
