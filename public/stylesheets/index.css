@@ -84,7 +84,7 @@
         display: flex;
     }
 
-    .post-item-categories h5 {
+    .post-item-categories small {
 
         padding: 0.8rem;
         border: 2px solid #303E8C;
@@ -100,7 +100,7 @@
     .author-image {
         width: 3.7rem;
         height: 3.7rem;
-        background-image: url(../images/user-profile-image.png);
+
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;

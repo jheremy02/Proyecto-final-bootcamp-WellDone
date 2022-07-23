@@ -4,6 +4,7 @@ const auth=require("../../middlewares/auth.js")
 const { syncIndexes } = require("../../models/Publication.js")
 const Publication=require("../../models/Publication.js")
 const upload=require("../../middlewares/upload.js")
+const User = require("../../models/User.js")
 
 
 //GET obtener publicaciones
@@ -11,11 +12,22 @@ router.get("/",async (req,res,next)=>{
 
   const start=parseInt(req.query.start) || 0
   const limit = parseInt(req.query.limit) || 100
-  const sort = req.query.sort || '_id'
+  const sort = req.query.sort || 'createdAt'
   const pagination={start,limit,sort}
 
   const publications= await Publication.list(pagination)
+
+
+
   res.json(publications)
+})
+
+//GET obtener publicacion
+
+router.get("/:id",(req,res)=>{
+  const {id}=req.params;
+  const publication=Publication.findOne({_id:id})
+  publication.then((data)=>{res.json(data)})
 })
 
 
@@ -37,6 +49,9 @@ router.post("/create",auth.authenticateToken, upload.single("image") , async (re
     res.status(500).json(error)
   }
 })
+
+//TODO : investigar porque las imagenes estan llegando como jpeg
+
 
 //PUT : update publication
 

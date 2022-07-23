@@ -23,7 +23,7 @@
         flex-direction: column;
         gap: 2rem;
         color: white;
-        
+
     }
 
     .post-item img {
@@ -35,8 +35,8 @@
         display: flex;
     }
 
-    .post-item-categories h5 {
-      
+    .post-item-categories small {
+
         padding: 0.8rem;
         border: 2px solid #303E8C;
         border-radius: 15px;
@@ -96,7 +96,7 @@
         flex-direction: column;
         width: 85%;
         color: white;
-        
+
 
     }
 
@@ -114,7 +114,7 @@
         grid-template-columns: auto 1fr 1fr ;
         grid-template-rows: auto 1fr;
         color: white;
-        
+
 
     }
 
@@ -134,7 +134,7 @@
 
     .post-detail-comment-published p {
         grid-column: 2/span 2;
-    } 
+    }
 
     .post-detail-comments-title {
         margin: 1.5rem;
@@ -156,5 +156,5 @@
         border-radius: 9px;
     }
 
-    
+
 }

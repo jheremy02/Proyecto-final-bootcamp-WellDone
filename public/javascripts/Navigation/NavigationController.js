@@ -61,14 +61,13 @@ import { SignUpController } from "../SignUp/SignUpController.js";
         const buttonNode=parser.parseFromString(buttonTemplate,'text/html').body.querySelector('li')
         const navbarElement=document.querySelector('.navbar-list')
         navbarElement.appendChild(buttonNode)
-        const buttonElement=document.querySelector('.navbar-list-item')
-
-          /*
+        const buttonElement=document.querySelector('.navbar-list-item.close-session')
+        console.log(buttonElement)
         buttonElement.addEventListener('click',()=>{
             SignUpController.closeSession()
             window.location.href="/"
         })
-        */
+
     }
 
     handleButton() {

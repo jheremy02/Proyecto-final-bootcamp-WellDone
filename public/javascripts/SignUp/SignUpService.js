@@ -55,7 +55,7 @@ class SignUpService {
 
       console.log(dataResponse.errors)
       throw dataResponse.errors
-        
+
       }
 
       const token =dataResponse.data.accessToken;
@@ -68,6 +68,12 @@ class SignUpService {
       console.log(localStorage.getItem("token"))
         return localStorage.getItem("token") || null
       }
+
+    static async  closeSession(){
+        window.localStorage.removeItem('token')
+        window.location.href='/'
+    }
+
 
 
 }

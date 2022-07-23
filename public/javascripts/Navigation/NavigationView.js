@@ -24,7 +24,7 @@ export const navigationViews={
 
   buildCloseSession(){
       return `
-      <li class="navbar-list-item"> <a href="#">Cerrar sesion</a></li>
+      <li class="navbar-list-item close-session"> <a href="#">Cerrar sesion</a></li>
       `
     }
   }

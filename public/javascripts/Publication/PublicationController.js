@@ -1,9 +1,9 @@
 
 import { pubSub } from "../pubSub.js";
 import { publicationsView } from "./PublicationViews.js";
-
+import { UserService } from "../User/UserService.js";
 import publicationService from "./PublicationService.js";
-
+import { UserController } from "../User/UserController.js";
 
 export class PublicationsController{
   constructor (publicationsElement){
@@ -36,10 +36,13 @@ export class PublicationsController{
           publicationsContainer.className='recent-post-container'
 
 
-          publications.forEach(element => {
-              const publicationNewItem= document.createElement('div')
+          publications.forEach(async element => { // recorrer cada publicacion
+            const author=await UserService.getUser(element.userName)//obtner informacion del autor pasando el nombre de usuario
+
+            const publicationNewItem= document.createElement('div')
               publicationNewItem.className='post-item'
-              const publicationTemplate = publicationsView.buildPublicationView(element)
+
+              const publicationTemplate = publicationsView.buildPublicationView(element,author)
               publicationNewItem.innerHTML=publicationTemplate
 
               //recorro el array de categorias para cada publicacion y construir un template de cada elemento y pintarlos
@@ -48,6 +51,10 @@ export class PublicationsController{
                 categoryItem.className="post-item-categories"
                 const categoryTemplate=publicationsView.buildCategoryItem(categoryName)
                 categoryItem.innerHTML=categoryTemplate
+                if (!author.image) {
+                  const templateAvatar=UserController.generateAvatar(author)
+                  publicationNewItem.querySelector(".author-image").innerHTML=templateAvatar
+                }
                 publicationNewItem.querySelector("#categories-container").appendChild(categoryItem)
               })
 

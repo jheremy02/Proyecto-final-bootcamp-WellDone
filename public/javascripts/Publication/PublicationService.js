@@ -15,7 +15,9 @@ export default {
 
         try {
 
+
           publications=await responseHttp.json()
+          console.log(publications)
 
         } catch (error) {
             throw new Error("No he podido transformar la respuesta a json")
@@ -24,10 +26,10 @@ export default {
         return publications
     } ,
 
-    async getAdvertisement(advertisementId){
-        const url=`http://localhost:8000/api/publications/${advertisementId}`
+    async getPublication(publicationId){
+        const url=`http://localhost:3000/api/publication/${publicationId}`
         let responseHttp;
-        let advertisement;
+        let publication;
         try {
             responseHttp=await fetch(url)
         } catch (error) {
@@ -36,7 +38,7 @@ export default {
 
         try {
 
-            advertisement=await responseHttp.json()
+            publication=await responseHttp.json()
 
         } catch (error) {
             throw new Error("No he podido transformar la respuesta a json")
@@ -47,7 +49,7 @@ export default {
             throw new Error("Anuncio no encontrado")
         }
 
-        return advertisement
+        return publication
     },
 
     async createPublication(publicationData){
@@ -67,6 +69,7 @@ export default {
 
         let response;
 
+        //TODO :revisar porque en el campo categorias se estan uniendo los valores como un solo elemento de array
         console.log(body.categories)
 
         try {

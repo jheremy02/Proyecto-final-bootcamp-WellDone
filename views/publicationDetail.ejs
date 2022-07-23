@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="">
+
     <link rel="stylesheet" href="/stylesheets/navbar.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
       <link rel="stylesheet" href="/stylesheets/postDetail.css">
       <link rel="stylesheet" href="/stylesheets/reset.css">
       <link rel="stylesheet" href="/stylesheets/footer.css">
+      <link rel="stylesheet" href="/stylesheets/style.css">
       <link rel="stylesheet" href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" />
     <title>PostDetail</title>
 </head>
@@ -20,39 +22,9 @@
     </header>
     <main class="main-section">
         <section class="post-detail-section">
-            <div class="post-detail-container">
-                <article class="post-item">
-                    <div class="post-item-categories">
-                        <h5>Technology</h5>
-                    </div>
-                    <div class="post-item-title"><h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, unde alias.</h2></div>
-                    <div class="post-author-container">
-                        <div class="author-image"></div>
-                        <div class="author-name">Elon Musk</div>
-                        <div class="post-item-date">May 02, 2022</div>
-
-                    </div>
-                    <img src="/images/post-image.jpg" alt="">
-
-
-                    <div class="post-item-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam rem necessitatibus dicta assumenda inventore repellat dignissimos quibusdam nobis quaerat officiis reprehenderit. <br>
-
-                    <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. At adipisci reiciendis, cupiditate magnam impedit, laborum porro asperiores praesentium et incidunt provident iure blanditiis nostrum illo rem est quisquam ex! Cupiditate. <br>
-
-                    <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit vero fuga sunt consequuntur adipisci voluptate unde accusamus voluptatem nostrum aliquid aspernatur, suscipit in est dolor obcaecati, nobis totam asperiores debitis!
-                    </div>
-
-                    <div class="post-written-by">
-                        <div class="post-written-by-title"><h5>Autor :</h5></div>
-                        <div class="post-written-author-image">
-                            <div class="author-image"></div>
-                        </div>
-                        <div class="author-name">Elon Musk</div>
-                        <div class="post-written-author-short-biography">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem harum explicabo, hic quas officiis unde aliquam itaque dicta asperiores.</p>
-                        </div>
-                    </div>
-                </article>
+          <div id="notification-container" class="w-40"></div>
+            <div class="post-detail-container" id="<%=data._id %>">
+                
             </div>
             <div class="post-detail-comments-section">
                 <div class="post-detail-comments-title">Comentarios</div>
@@ -79,6 +51,6 @@
         </section>
     </main>
     <% include _footer.ejs %>
-    <script type="module" src="/javascripts/app.js"></script>
+    <script type="module" src="/javascripts/Publication/publicationDetail.js"></script>
 </body>
 </html>
