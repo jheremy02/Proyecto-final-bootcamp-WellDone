@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
 
         <div class="create-form-container w-5/6 bg-primary-gray flex flex-col items-center rounded-lg  md:w-[87%]  gap-8 ">
 
-            <h1 class="text-white font-bold text-3xl pt-7 px-3">Crear Publicacion</h1>
+            <h1 class="text-white font-bold text-3xl pt-7 px-3">Editar Publicacion</h1>
             <div id="notification-container">
             </div>
             <form action="" class="flex flex-col justify-center  md:w-11/12">
@@ -27,10 +28,10 @@
                 <label class="block text-white text-sm font-bold mb-2" for="inputTitle">
                     Titulo
                   </label>
-                  <input class=" bg-primary-darkBlue shadow appearance-none border rounded w-full py-2 px-3 text-white leading-tight focus:outline-none focus:shadow-outline mb-5" id="inputTitle" name="inputTitle" type="text" placeholder="title">
+                  <input class=" bg-primary-darkBlue shadow appearance-none border rounded w-full py-2 px-3 text-primary-gray leading-tight focus:outline-none focus:shadow-outline mb-5" id="inputTitle" name="inputTitle" type="text" placeholder="title" value="<%= publication.title %>">
 
                   <label for="inputContent" class="block mb-2 text-sm font-medium text-white dark:text-gray-400">Contenido</label>
-                  <textarea id="inputContent" rows="4" name="inputContent" class="bg-primary-darkBlue mb-5 block p-2.5 w-full text-sm text-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."></textarea>
+                  <textarea id="inputContent" rows="4" name="inputContent" class="bg-primary-darkBlue mb-5 block p-2.5 w-full text-sm text-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Your message..."><%= publication.content %> </textarea>
 
                   <label class="block text-white text-sm font-bold mb-2" for="inputTitle">Categorias</label>
 
@@ -43,15 +44,26 @@
 
                     <ul class="list-items">
 
-                      <% for( let index = 0; index < categories.length; index++ ) { %>
-                        <li class="item">
-                          <span class="checkbox">
-                              <i class="fa-solid fa-check check-icon"></i>
-                          </span>
-                          <span class="item-text"><%= categories[index] %> </span>
-                      </li>
-                      <% } %>
 
+                        <% for( let index = 0; index < categories.length; index++ ) { %>
+
+                          <% if (publication.categories.find(item=>item==categories[index])) { %>
+                            <li class="item checked">
+                              <span class="checkbox">
+                                  <i class="fa-solid fa-check check-icon"></i>
+                              </span>
+                              <span class="item-text"><%= categories[index] %> </span>
+                          </li>
+                          <% } else { %>
+                            <li class="item">
+                              <span class="checkbox">
+                                  <i class="fa-solid fa-check check-icon"></i>
+                              </span>
+                              <span class="item-text"><%= categories[index] %></span>
+                          </li>
+                            <% } %>
+
+                        <% } %>
 
 
                     </ul>
@@ -66,7 +78,7 @@
 
 
 
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ">Publicar</button>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 ">Guardar</button>
             </form>
         </div>
     </main>
@@ -76,3 +88,6 @@
 
 </body>
 </html>
+
+
+

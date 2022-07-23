@@ -72,7 +72,7 @@ export class PublicationDetailController {
 
           const buttonsNode=document.createElement("div")
           buttonsNode.className="buttons-container flex gap-6 text-white"
-          //this.drawEditButton(buttonsNode)
+          this.drawEditButton(buttonsNode)
             this.drawDeleteButton(buttonsNode)
             this.publicationDetailElement.appendChild(buttonsNode)
         }
@@ -81,6 +81,17 @@ export class PublicationDetailController {
 
 isOwner(userName) {
     return userName===this.publication.userName
+}
+
+async drawEditButton(buttonsNode) {
+  const buttonEditNode=document.createElement("div")
+  buttonEditNode.className="edit-button"
+  const buttonEditTemplate=publicationsView.buildEditButtonView(this.publication._id)
+  buttonEditNode.innerHTML=buttonEditTemplate
+  buttonsNode.appendChild(buttonEditNode)
+  buttonEditNode.addEventListener('click',()=>{
+    this.editButton()
+})
 }
 
 async drawDeleteButton(buttonsNode) {
@@ -100,8 +111,8 @@ async deleteButton(){
 
     try {
         if (shouldDelete) {
-            this.advertisement.innerHTML=buildAdvertisementsSpinnerView()
-            await AdvertisementsService.deleteAdvertisement(this.advertisement.id)
+            console.log(this.publication)
+            await PublicationService.deletePublication(this.publication._id)
 
             window.location.href="/"
         }
@@ -109,6 +120,14 @@ async deleteButton(){
         pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
     }
 
+}
+
+async editButton() {
+  try {
+
+  } catch (error) {
+
+  }
 }
 
 

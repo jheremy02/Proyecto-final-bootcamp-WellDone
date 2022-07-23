@@ -102,24 +102,28 @@ export default {
 
     },
 
-    async deleteAdvertisement (advertisementId) {
-        const url=`http://localhost:8000/api/publications/${advertisementId}`
+    async deletePublication (publicationId) {
+        const url=`http://localhost:3000/api/publication/${publicationId}`
         let responseHttp;
-
+        console.log(signUpService.getLoggedUser())
         try {
             responseHttp=await fetch(url,{
                 method:"DELETE",
                 headers: {
-                    Authorization: "Bearer "+ signUpService.getLoggedUser()
+                    Authorization: "Bearer "+ `${signUpService.getLoggedUser()}`
                 }
                 })
         } catch (error) {
             throw new Error("No he podido borrar por el anuncio")
         }
-
+        const responsedata=await responseHttp.json()
         if (!responseHttp.ok) {
+              if (responsedata.errors) {
+                  throw new Error(responsedata.errors)
+              } else {
+                throw new Error("Anuncio no encontrado")
+              }
 
-            throw new Error("Anuncio no encontrado")
         }
     }
 }

@@ -54,6 +54,10 @@ export const publicationsView = {
 
   buildDeleteButtonView() {
     return `<button id="delete-button" class="w-20 h-10 bg-primary-fuchsia rounded-md">Delete</button>`
+  },
+
+  buildEditButtonView(publicationId){
+    return `<a href="/publication/edit/${publicationId}"><button  id="edit-button" class="w-20 h-10 bg-primary-indigo rounded-md">Edit</button></a>`
   }
 
 }

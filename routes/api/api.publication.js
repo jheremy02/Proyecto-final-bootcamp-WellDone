@@ -77,10 +77,11 @@ router.put("/:id",async (req,res,next)=>{
 
 //DELETE: delete publication
 
-router.delete("/:id",async (req,res,next)=>{
+router.delete("/:id", auth.authenticateToken ,async (req,res,next)=>{
   try {
     const publication= await Publication.findById(req.params.id)
-      if (publication.userId==req.body.userId) {
+    console.log(req.body.data)
+      if (publication.userName==req.user.data) {
           try {
 
             await publication.delete()
