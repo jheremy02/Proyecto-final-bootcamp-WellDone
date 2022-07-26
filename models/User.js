@@ -10,7 +10,8 @@ const userSchema= mongoose.Schema({
   lastName:String,
   email:{type:String,required:true , unique:true},
   userName:{type:String,required:true , unique:true},
-  password:{type:String,required:true}
+  password:{type:String,required:true},
+  biography:String
 } , {
   collection:"users" //aqui va el nombre de la collecion
 })
@@ -37,17 +38,13 @@ userSchema.pre('save',function (next){
 })
 
 userSchema.statics.getUser= async (userName)=>{
-  console.log(userName)
   const userData= await User.findOne({userName})
-
-  console.log(userData)
 
   delete userData._id;
   delete userData._v;
   delete userData.password;
 
   return userData
-
 }
 
 userSchema.methods.isCorrectPassword=function (password,callback) {

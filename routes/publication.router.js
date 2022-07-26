@@ -31,12 +31,13 @@ router.get("/:id",(req,res,next)=>{
 
 
 
-
 router.get("/edit/:id", async (req,res,next)=>{
   const publication=await Publication.findOne({_id:req.params.id})
   const categoriesdata= await Category.find()
   const categoriesNames=categoriesdata.map(item=>item.name)
-  console.log(categoriesNames)
+
+ console.log(categoriesNames)
+ console.log(publication.categories)
   if (publication) {
     res.render("editPublication",{publication,categories:categoriesNames})
   } else {

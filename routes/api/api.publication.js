@@ -27,7 +27,10 @@ router.get("/",async (req,res,next)=>{
 router.get("/:id",(req,res)=>{
   const {id}=req.params;
   const publication=Publication.findOne({_id:id})
-  publication.then((data)=>{res.json(data)})
+
+  publication.then((data)=>{
+    console.log(data)
+    res.json(data)})
 })
 
 
@@ -55,12 +58,23 @@ router.post("/create",auth.authenticateToken, upload.single("image") , async (re
 
 //PUT : update publication
 
-router.put("/:id",async (req,res,next)=>{
+router.put("/update/:id", auth.authenticateToken,upload.single("image") ,async (req,res,next)=>{
+  req.body.categories=req.body.categories.split(",")
+  let publicationData={...req.body}
+  console.log(publicationData)
   try {
     const publication= await Publication.findById(req.params.id)
-      if (publication.userId==req.body.userId) {
+      if (publication.userName==req.user.data) {
           try {
-            const updatedPublication=await Publication.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true});
+            let updatedPublication
+            if (req.file) {
+                publicationData={...publicationData,image:req.file.path}
+               updatedPublication=await Publication.findByIdAndUpdate(req.params.id,{$set:publicationData},{new:true});
+            } else {
+              delete publicationData.image
+               updatedPublication=await Publication.findByIdAndUpdate(req.params.id,{$set:publicationData},{new:true});
+            }
+
 
             res.status(200).json(updatedPublication)
           } catch (error) {
@@ -80,7 +94,7 @@ router.put("/:id",async (req,res,next)=>{
 router.delete("/:id", auth.authenticateToken ,async (req,res,next)=>{
   try {
     const publication= await Publication.findById(req.params.id)
-    console.log(req.body.data)
+
       if (publication.userName==req.user.data) {
           try {
 

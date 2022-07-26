@@ -39,7 +39,7 @@ export default {
         try {
 
             publication=await responseHttp.json()
-
+            console.log(publication)
         } catch (error) {
             throw new Error("No he podido transformar la respuesta a json")
         }
@@ -68,7 +68,7 @@ export default {
         body.append("image",data.image)
 
         let response;
-
+        console.log(data.categories)
         //TODO :revisar porque en el campo categorias se estan uniendo los valores como un solo elemento de array
         console.log(body.categories)
 
@@ -125,5 +125,49 @@ export default {
               }
 
         }
+    },
+
+    async updatePublication(publicationData) {
+      const data={
+        id:publicationData.id,
+        title: publicationData.title,
+        content: publicationData.content,
+        categories: publicationData.categories,
+        image: publicationData.image
     }
+
+    const body=new FormData()
+        body.append("id",data.id)
+        body.append("title",data.title)
+        body.append("content",data.content)
+        body.append("categories",data.categories)
+        body.append("image",data.image)
+
+        let response;
+
+        try {
+          response = await fetch(`http://localhost:3000/api/publication/update/${publicationData.id}`,{
+              method: "PUT",
+              body: body,
+              headers: {
+              Authorization: "Bearer "+`${signUpService.getLoggedUser()}`
+          }})
+
+      } catch (error) {
+          throw new Error("No he podido actualizar la  publicacion")
+      }
+      if (!response.ok) {
+
+        const data=await response.json()
+        console.log(data)
+        throw data.errors
+      }
+
+      try {
+          const data=await response.json()
+      } catch (error) {
+          throw new Error("No he podido transformar la respuesta a json")
+      }
+    }
+
 }

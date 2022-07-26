@@ -48,6 +48,7 @@ import { signUpService } from "../SignUp/SignUpService.js";
              const inputElements=new FormData(this.createFormElement)
              const title= inputElements.get('inputTitle') ;
              const content=inputElements.get('inputContent') ;
+             console.log(content)
              let categories=[];
              this.listItemsNode.querySelectorAll(".item.checked").forEach((item)=>{
                 categories.push(item.querySelector(".item-text").textContent)

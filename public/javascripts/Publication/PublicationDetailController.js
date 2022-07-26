@@ -130,6 +130,62 @@ async editButton() {
   }
 }
 
+async onSubmitEditForm() {
+  const updateFormElement=this.publicationDetailElement
+  updateFormElement.addEventListener("submit",(event)=>{
+    event.preventDefault()
+    const inputElements=new FormData(updateFormElement)
+             const id=updateFormElement.id
+             const title= inputElements.get('inputTitle') ;
+             const content=window.parent.tinymce.get('inputContent').getContent(); ;
+
+             let categories=[];
+             this.listItemsNode.querySelectorAll(".item.checked").forEach((item)=>{
+                categories.push(item.querySelector(".item-text").textContent)
+             })
+             console.log(content)
+             const image=inputElements.get('file_input') || null ;
+
+             const publicationData={id,title,content,categories,image}
+
+             this.updatePublication(publicationData)
+  })
+}
+
+handleButtonCategories(){
+  const selectBtn = this.publicationDetailElement.querySelector(".select-btn")
+   this.listItemsNode=this.publicationDetailElement.querySelector(".list-items")
+  const items = this.listItemsNode.querySelectorAll(".item");
+
+  selectBtn.addEventListener("click", () => {
+  selectBtn.classList.toggle("open");
+  });
+
+items.forEach(item => {
+item.addEventListener("click", () => {
+    item.classList.toggle("checked");
+    console.log(item.querySelector(".item-text").textContent)
+    let checked = document.querySelectorAll(".checked"),
+        btnText = document.querySelector(".btn-text");
+
+        if(checked && checked.length > 0){
+            btnText.innerText = `${checked.length} Selected`;
+        }else{
+            btnText.innerText = "Select Language";
+        }
+});
+})
+
+}
+async updatePublication(publicationData){
+  try {
+          await PublicationService.updatePublication(publicationData)
+          pubSub.publish(pubSub.TOPICS.SHOW_SUCCESS_NOTIFICATION,"Publicacion actualizada con exito")
+  } catch (error) {
+    pubSub.publish(pubSub.TOPICS.SHOW_ERROR_NOTIFICATION,error)
+  }
+}
+
 
 }
 
