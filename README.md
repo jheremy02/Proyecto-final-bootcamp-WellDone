@@ -21,6 +21,38 @@ npm run dev
 
 ```
 
-## Ruta Base
+## Ruta Base para api
 
 El api puede ser usad con  la ruta : /api
+
+## PUBLICATIONS
+
+## GET /publication
+
+Permite obtener todas las publicaciones almacenados en la db
+
+## ## GET /publication/:id
+
+Devuelve un registro especifico de la publicacion con el id especificado.
+
+## POST /publication/create
+
+Crea un nuevo registro con los valores pasados en el body.
+
+Campos en el body :
+  
+  - title
+  - content
+  - categories
+  - image
+  - userName
+
+
+## PUT /publication/:id
+Permite actualizar un registro especifico correspondiente al id pasado como parametro , editará los valores que le enviemos en el body y retornara el registro actualizado.
+
+## DELETE /publication/:id
+
+Elimina una publicacion especifica correspondiente al id enviado como parametro.
+
+
