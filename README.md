@@ -105,3 +105,13 @@ Detalle de publicacion :
   - Muestra informacion del autor de la pubicacion
 
 Crear Publicacion
+  - una vez logueado en la barra de navegacion aparecera la opcion de crear , el cual permite crear
+    una nueva publicacion.
+  - En el formulario de creacion es necesario llenar todos los campos.
+
+Editar publicacion 
+
+  - Al ver el detalle de una publicacion en la parte inferior aparecera un boton de editar solo si estamos logueados
+    y somos el propietario de la publicacion
+
+  - En el formulario de edicion es necesario completar todos los campos
