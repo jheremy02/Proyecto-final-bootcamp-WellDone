@@ -19,26 +19,11 @@
 
         <% include _nav.ejs %>
 
-        <div class="hero-container">
-          <div class="order-2 md:order-1 mt-10">
-            <h1 class="text-5xl  font-semibold">
-              Transforma
-            </h1>
-            <h2 class="text-5xl  font-semibold mt-2 mb-5">
-              la <span class="text-primary">realidad</span>
-            </h2>
-            <h3 class="text-xl  font-bold opacity-70 mt-11"></h3>
-            <a href="#about"  class="btn-primary">Sobre mí</a>
-          </div>
-
-          <!--Hero container-->
-
-          <div class="container-hero-image">
-            <img class = "object-cover  w-full h-full opacity-90 object-center" src="./assets/images/hero-code.jpg" alt="">
-            <img class = "object-cover w-full h-full opacity-90 object-center" src="./assets/images/hero-idea.jpg" alt="">
-            <img class = "object-cover w-full h-full opacity-90 object-center" src="./assets/images/hero-phrase.jpg" alt="">
-
-          </div>
+        <div class="hero-container h-96 flex relative">
+          <img  class="object-cover w-full h-full" src="/assets/images/hero-phrase.jpg" alt="">
+            <div class="hero absolute">
+                <h1 class="text-4xl font-extrabold"> Bend Reality</h1>
+            </div>
         </div>
 
     </header>

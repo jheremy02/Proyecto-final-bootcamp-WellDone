@@ -2,6 +2,15 @@
 module.exports = {
   content: ["./views/*.ejs","./node_modules/flowbite/**/*.js"],
   theme: {
+    container:{
+      center:true,
+      padding:{
+        DEFAULT:"1rem",
+        sm:"2rem",
+        md:"3rem",
+        lg:"4rem"
+      }
+    },
     extend: {
       colors:{
         primary:{
