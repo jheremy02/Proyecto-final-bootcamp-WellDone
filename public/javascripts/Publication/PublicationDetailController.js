@@ -33,13 +33,13 @@ export class PublicationDetailController {
       const publicationItem=document.createElement("article")
       publicationItem.className="post-item"
       publicationItem.innerHTML=publicationTemplate
-
+      
       this.publication.categories.forEach((categoryName)=>{
         const categoryItem=document.createElement("div")
         categoryItem.className="post-item-categories"
         const categoryTemplate=publicationsView.buildCategoryItem(categoryName)
         categoryItem.innerHTML=categoryTemplate
-        if (!authorPublication.image) {
+        if (!authorPublication.imageProfile) {
           const templateAvatar=UserController.generateAvatar(authorPublication)
           publicationItem.querySelector(".author-image").innerHTML=templateAvatar
         }

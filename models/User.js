@@ -11,7 +11,8 @@ const userSchema= mongoose.Schema({
   email:{type:String,required:true , unique:true},
   userName:{type:String,required:true , unique:true},
   password:{type:String,required:true},
-  biography:String
+  biography:String,
+  imageProfile:String,
 } , {
   collection:"users" //aqui va el nombre de la collecion
 })

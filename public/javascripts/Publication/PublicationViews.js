@@ -6,14 +6,14 @@ export const publicationsView = {
     const created_at=new Date(publication.createdAt)
 
     return `
-    <a href="/publication/${publication._id}"><img src="${publication.image}" alt=""></a>
+    <a href="/publication/${publication._id}"><img class="post-image" src="${publication.image}" alt=""></a>
     <div id="categories-container" class=" flex flex-wrap gap-2 ">
     </div>
       <div class="post-item-title"><h2>${publication.title}</h2></div>
-      <div class="post-item-content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam rem necessitatibus dicta assumenda inventore repellat dignissimos quibusdam nobis quaerat officiis reprehenderit.</div>
+      <div class="post-item-content">${publication.content}</div>
 
       <div class="post-author-container">
-          <div class="author-image"></div>
+          <div class="author-image"><img class="w-14 h-14 object-cover rounded-[50%]" src="/${author.imageProfile}" alt=""></div>
           <div class="author-name">${author.name} ${author.lastName}</div>
           <div class="post-item-date">${created_at.getDay()}/${created_at.getMonth()}/${created_at.getFullYear()}</div>
 

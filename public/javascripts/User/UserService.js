@@ -46,7 +46,7 @@ export const UserService = {
       body.append("userName",data.userName)
       body.append("name",data.name)
       body.append("lastName",data.lastName)
-      body.append("image",data.image)
+      body.append("imageProfile",data.image)
       body.append("biography",data.biography)
 
       let response;

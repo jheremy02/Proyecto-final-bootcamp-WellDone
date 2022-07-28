@@ -18,10 +18,10 @@ router.get("/:username",async (req,res)=>{
 
 
 //UPDATE actualizar informacion de usuario
-router.put("/edit/:username", auth.authenticateToken,upload.single("image") ,async (req,res,next)=>{
+router.put("/edit/:username", auth.authenticateToken,upload.single("imageProfile") ,async (req,res,next)=>{
 
   let userData={...req.body}
-
+  console.log(userData)
   try {
     const user= await User.findOne({userName:req.body.userName})
 
@@ -32,9 +32,9 @@ router.put("/edit/:username", auth.authenticateToken,upload.single("image") ,asy
             let updatedUser
             if (req.file) {
 
-              userData={...userData,image:req.file.path}
-              console.log(user.userName)
-              console.log(userData)
+              userData={...userData,imageProfile:req.file.path}
+
+
               updatedUser=await User.findByIdAndUpdate(user._id,{$set:userData},{new:true});
 
             } else {

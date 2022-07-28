@@ -51,7 +51,8 @@ export class PublicationsController{
                 categoryItem.className="post-item-categories"
                 const categoryTemplate=publicationsView.buildCategoryItem(categoryName)
                 categoryItem.innerHTML=categoryTemplate
-                if (!author.image) {
+                
+                if (!author.imageProfile) {
                   const templateAvatar=UserController.generateAvatar(author)
                   publicationNewItem.querySelector(".author-image").innerHTML=templateAvatar
                 }
