@@ -29,11 +29,11 @@ export class PublicationDetailController {
       const authorPublication=await UserService.getUser(this.publication.userName)
 
       const publicationTemplate=publicationsView.buildPublicationDetailView(this.publication,authorPublication)
-      console.log("hello Item")
+      console.log(this.publication)
       const publicationItem=document.createElement("article")
       publicationItem.className="post-item"
       publicationItem.innerHTML=publicationTemplate
-      
+
       this.publication.categories.forEach((categoryName)=>{
         const categoryItem=document.createElement("div")
         categoryItem.className="post-item-categories"

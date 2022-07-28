@@ -26,7 +26,7 @@
 
     }
 
-    .post-item img {
+    .post-item .post-image{
         width: 100%;
         border-radius: 9px;
     }
@@ -51,7 +51,7 @@
     .author-image {
         width: 3.7rem;
         height: 3.7rem;
-        background-image: url(../images/user-profile-image.png);
+
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -151,7 +151,7 @@
         line-height: 1.5rem;
     }
 
-    .post-item img {
+    .post-item .post-image {
         width: 85%;
         border-radius: 9px;
     }

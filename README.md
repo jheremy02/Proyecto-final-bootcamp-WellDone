@@ -1,6 +1,20 @@
 # Proyecto-final-bootcamp-WellDone
 Desarrollo de una aplicacion web el cual consiste en ser una red de blogging , publicacion , edicion , interaccion de contenido de blogs.
 
+
+#Tecnologias
+
+FRONTEND :
+ - html
+ - css
+ - tailwind
+ - vanilla javascript
+
+BACKEND :
+  - nodejs
+  - express
+  - mongoBD
+
 ## Instalar dependencias
 
 ```sh
@@ -8,6 +22,14 @@ Desarrollo de una aplicacion web el cual consiste en ser una red de blogging , p
     npm install
 
 ```
+## Inicializar la Base de datos cargando categorias de publicaciones
+
+```sh
+npm initdb
+
+```
+
+
 ## Inicio de la aplicación
 
 ```sh
@@ -56,3 +78,30 @@ Permite actualizar un registro especifico correspondiente al id pasado como para
 Elimina una publicacion especifica correspondiente al id enviado como parametro.
 
 
+## USERS
+
+## GET /user/:username
+
+obtener informacion de un usuario
+
+## PUT /user/edit/:username
+
+Actualizar informacion de un usuario pasandole el username como parametro
+
+
+## Funcionalidades
+
+Autententicacion  :
+
+  - registro : permite crear usuario nuevo
+  - login : inicia sesion para poder crear una publicacion
+
+Lista de publicaciones :
+ - muestra todas las publicaciones de la bd en el index
+
+Detalle de publicacion :
+  - Al hacer clicl en una publicacion del index te redirecciona a otra pestaña para mostrar la publicacion
+    con mas detalle.
+  - Muestra informacion del autor de la pubicacion
+
+Crear Publicacion

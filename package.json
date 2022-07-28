@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "build:css": "postcss public/stylesheets/tailwind.css -o public/stylesheets/style.css",
-    "dev": "npm run build:css && nodemon ./bin/www.js"
+    "dev": "npm run build:css && nodemon ./bin/www.js",
+    "initdb": "node initDB.js"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",

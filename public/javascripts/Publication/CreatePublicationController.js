@@ -47,7 +47,7 @@ import { signUpService } from "../SignUp/SignUpService.js";
             event.preventDefault()
              const inputElements=new FormData(this.createFormElement)
              const title= inputElements.get('inputTitle') ;
-             const content=inputElements.get('inputContent') ;
+             const content=window.parent.tinymce.get('inputContent').getContent(); ;
              console.log(content)
              let categories=[];
              this.listItemsNode.querySelectorAll(".item.checked").forEach((item)=>{

@@ -25,12 +25,13 @@ export class PublicationsController{
 
       try {
           publications=await publicationService.getPublications()
-          console.log(publications)
-          /*
+
+
           if (publications.length===0) {
-              this.publicationsElement.innerHTML=buildNotFoundpublicationsView()
+              this.publicationsElement.innerHTML=publicationsView.buildNotFoundpublicationsView()
+              return;
           }
-          */
+
 
           const publicationsContainer= document.createElement('div')
           publicationsContainer.className='recent-post-container'
@@ -51,7 +52,7 @@ export class PublicationsController{
                 categoryItem.className="post-item-categories"
                 const categoryTemplate=publicationsView.buildCategoryItem(categoryName)
                 categoryItem.innerHTML=categoryTemplate
-                
+
                 if (!author.imageProfile) {
                   const templateAvatar=UserController.generateAvatar(author)
                   publicationNewItem.querySelector(".author-image").innerHTML=templateAvatar
