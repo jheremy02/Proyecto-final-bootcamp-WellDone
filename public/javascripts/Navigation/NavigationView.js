@@ -1,3 +1,6 @@
+
+import { UserView } from "../User/UserView.js";
+
 export const navigationViews={
   buildNavigationBasic(){
       return
@@ -26,5 +29,14 @@ export const navigationViews={
       return `
       <li class="navbar-list-item close-session"> <a href="#">Cerrar sesion</a></li>
       `
-    }
+    },
+
+  buildProfileButton(firtsLetterName, lastnameFirtsLetter){
+    const avatarProfileTemplate=UserView.buildAvatarView(firtsLetterName,lastnameFirtsLetter)
+    return `
+        <li class="navbar-list-item profile-link"><a href="#">${avatarProfileTemplate}</a></li>
+    `
+
+  }
+
   }

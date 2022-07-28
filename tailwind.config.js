@@ -10,7 +10,9 @@ module.exports = {
           gray:"#292A30",
           backGray:"#1F2025",
           indigo:"#304EF2",
-          fuchsia:"#D93654"
+          fuchsia:"#D93654",
+          lilac:"#BFA7F2"
+
         },
         avatar: {
           skyBlue:"#049DD9",

@@ -2,6 +2,8 @@ import { navigationViews } from "./NavigationView.js";
 import { NotificationController } from "../Notification/NotificationController.js";
 import { SignUpController } from "../SignUp/SignUpController.js";
  import { signUpService } from "../SignUp/SignUpService.js";
+import { decodeToken } from "../../utils/decodeToken.js";
+import { UserService } from "../User/UserService.js";
 
 
  class NavigationController {
@@ -70,8 +72,32 @@ import { SignUpController } from "../SignUp/SignUpController.js";
 
     }
 
+    async drawProfileButton (userData) {
+
+      const user= await UserService.getUser(userData.data)
+      console.log(user)
+      const firtsLetterName=user.name.split("")[0].toUpperCase()
+
+    const lastnameFirtsLetter=user.lastName.split("")[0].toUpperCase()
+      const buttonTemplate=navigationViews.buildProfileButton(firtsLetterName , lastnameFirtsLetter)
+      const parser=new DOMParser()
+      const buttonNode=parser.parseFromString(buttonTemplate,'text/html').body.querySelector('li')
+      const navbarElement=document.querySelector('.navbar-list')
+      navbarElement.appendChild(buttonNode)
+      const buttonElement=document.querySelector('.navbar-list-item.profile-link')
+
+
+
+
+        buttonElement.addEventListener('click',()=>{
+
+            window.location.href=`/user/profile/${userData.data}`
+        })
+    }
+
     handleButton() {
         const loggedUserToken=signUpService.getLoggedUser()
+        const userData= decodeToken(loggedUserToken)
 
         if (!loggedUserToken) {
 
@@ -81,10 +107,13 @@ import { SignUpController } from "../SignUp/SignUpController.js";
         } else {
             this.drawCreateButton()
             this.drawCloseSessionButton()
+            this.drawProfileButton(userData)
         }
 
 
     }
+
+
  }
 
 export const navigationController = new NavigationController(document.querySelector('nav'))
